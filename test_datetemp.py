@@ -1,6 +1,7 @@
 import datetime
 import unittest
 
+import datetemp
 from datetemp import DateTemp
 
 
@@ -65,17 +66,24 @@ class TestString(TestDateTemp):
         expected = 'The temperature on (2022, 9, 11) was 80.0 F'
         self.assertEqual(actual, expected)
 
-class TestSortedByDate(TestDateTemp):
 
+class TestSortedByDateOrTemp(TestDateTemp):
+
+    datetemp1 = DateTemp((2022, 9, 11), 70)
+    datetemp2 = DateTemp((2011, 1, 2), 55)
+    datetemp3 = DateTemp((2022, 8, 30), 89)
+    datetemp_list = [datetemp1, datetemp2, datetemp3]
+
+    # test if the output is sorted by date
     def test_sorted_date(self):
-        datetemp_list = DateTemp([[(datetime.date(2022, 9, 11)), 80],
-                         [(datetime.date(2011, 1, 2)), 55],
-                         [(datetime.date(2022, 8, 30)), 89]])
-        expected = [['2011, 01, 02', 55],
-                    ['2022, 08, 30', 89],
-                    ['2022, 09, 11', 80]]
-        self.assertEqual(datetemp.sorted_by_date(datetemp_list), expected)
+        actual = datetemp.sorted_by_date(self.datetemp_list)
+        expected = [self.datetemp2, self.datetemp3, self.datetemp1]
+        self.assertEqual(actual, expected)
 
+    def test_sorted_temp(self):
+        actual = datetemp.sorted_by_temp(self.datetemp_list)
+        expected = [self.datetemp2, self.datetemp1, self.datetemp3]
+        self.assertEqual(actual, expected)
 # ----------------------------------------------------------------------
 # 5 tests that are not necessary because they are in an equivalence class that is already being tested
 #
@@ -84,3 +92,7 @@ class TestSortedByDate(TestDateTemp):
 # 3. set_date_from_ints because it equivalents to test_valid_date
 # 4. __repr__ because it equivalents to __str__
 # ----------------------------------------------------------------------
+
+# expected = [The temperature on (2011, 1, 2) was 55 F,
+#            The temperature on (2022, 8, 30) was 89 F,
+#            The temperature on (2022, 9, 11) was 70 F]
