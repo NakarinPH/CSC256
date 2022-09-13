@@ -95,6 +95,7 @@ class TestSortedByDateOrTemp(TestDateTemp):
 # 2. the init test of temperature because it equivalents to temperature
 # 3. set_date_from_ints because it equivalents to test_valid_date
 # 4. __repr__ because it equivalents to __str__
+# 5. date with the decorator @property because it is test with the date test
 # ----------------------------------------------------------------------
 
 
