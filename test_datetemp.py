@@ -1,3 +1,6 @@
+# Nakarin Philangam
+# CSC256.0001
+
 import datetime
 import unittest
 
@@ -13,7 +16,7 @@ class TestDateTemp(unittest.TestCase):
 
 
 # ----------------------------------------------------------------------
-# Init Test does not need
+# Init Test does not need becauce it is equivalents to date and temperature
 # ----------------------------------------------------------------------
 # # test the init if have the correct value
 # class TestInit(TestDateTemp):
@@ -72,9 +75,12 @@ class TestString(TestDateTemp):
 
 class TestSortedByDateOrTemp(TestDateTemp):
 
+    # create DateTemp objects
     datetemp1 = DateTemp((2022, 9, 11), 70)
     datetemp2 = DateTemp((2011, 1, 2), 55)
     datetemp3 = DateTemp((2022, 8, 30), 89)
+
+    # add each DateTemp Objects into the list
     datetemp_list = [datetemp1, datetemp2, datetemp3]
 
     # test if the output is sorted by date
@@ -83,6 +89,7 @@ class TestSortedByDateOrTemp(TestDateTemp):
         expected = [self.datetemp2, self.datetemp3, self.datetemp1]
         self.assertEqual(actual, expected)
 
+    # test if the output is sorted by temperature
     def test_sorted_temp(self):
         actual = datetemp.sorted_by_temp(self.datetemp_list)
         expected = [self.datetemp2, self.datetemp1, self.datetemp3]
@@ -91,10 +98,10 @@ class TestSortedByDateOrTemp(TestDateTemp):
 # ----------------------------------------------------------------------
 # 5 tests that are not necessary because they are in an equivalence class that is already being tested
 #
-# 1. the init test of date because it is tested with the date test (equivalents to date)
-# 2. the init test of temperature because it equivalents to temperature
-# 3. set_date_from_ints because it equivalents to test_valid_date
-# 4. __repr__ because it equivalents to __str__
+# 1. the init test of date because it is tested with the date test (is equivalent to date)
+# 2. the init test of temperature because it is equivalent to temperature
+# 3. set_date_from_ints because it is equivalent to test_valid_date
+# 4. __repr__ because it is equivalent to __str__
 # 5. date with the decorator @property because it is test with the date test
 # ----------------------------------------------------------------------
 
