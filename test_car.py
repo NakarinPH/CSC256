@@ -58,4 +58,4 @@ class TestBrake(TestCar):
 
     def test_example_of_failed_test(self):
         self.car.accelerate()
-        self.assertEqual(self.car.speed,0)
+        self.assertEqual(self.car.speed,5)

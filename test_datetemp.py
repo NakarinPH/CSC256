@@ -12,6 +12,9 @@ class TestDateTemp(unittest.TestCase):
         self.datetemp = DateTemp((2022, 9, 11), 80.00)
 
 
+# ----------------------------------------------------------------------
+# Init Test does not need
+# ----------------------------------------------------------------------
 # # test the init if have the correct value
 # class TestInit(TestDateTemp):
 #
@@ -84,6 +87,7 @@ class TestSortedByDateOrTemp(TestDateTemp):
         actual = datetemp.sorted_by_temp(self.datetemp_list)
         expected = [self.datetemp2, self.datetemp1, self.datetemp3]
         self.assertEqual(actual, expected)
+
 # ----------------------------------------------------------------------
 # 5 tests that are not necessary because they are in an equivalence class that is already being tested
 #
@@ -93,6 +97,4 @@ class TestSortedByDateOrTemp(TestDateTemp):
 # 4. __repr__ because it equivalents to __str__
 # ----------------------------------------------------------------------
 
-# expected = [The temperature on (2011, 1, 2) was 55 F,
-#            The temperature on (2022, 8, 30) was 89 F,
-#            The temperature on (2022, 9, 11) was 70 F]
+
